@@ -1,33 +1,29 @@
-// admin.js (Complete replacement)
+// admin.js (Complete replacement using modern Firebase v9 syntax)
+
+// Import the functions you need from the SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+    // --- PASTE YOUR FIREBASE CONFIGURATION OBJECT HERE ---
+    // (It's okay to have this here, just don't share it publicly)
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY", // Use your actual key here
+        authDomain: "mess-project-3c021.firebaseapp.com",
+        projectId: "mess-project-3c021",
+        storageBucket: "mess-project-3c021.appspot.com",
+        messagingSenderId: "428617648708",
+        appId: "1:428617648708:web:e5bf65bb56e89ae14b8a11",
+        measurementId: "G-GFTQ6G6ZVJ"
+    };
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCaFan1ZaRDsHTaR5O2m9KmWLy0nSp3L1o",
-  authDomain: "mess-project-3c021.firebaseapp.com",
-  projectId: "mess-project-3c021",
-  storageBucket: "mess-project-3c021.firebasestorage.app",
-  messagingSenderId: "428617648708",
-  appId: "1:428617648708:web:e5bf65bb56e89ae14b8a11",
-  measurementId: "G-GFTQ6G6ZVJ"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-    // --- Initialize Firebase ---
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore(); // Our database
-    const auth = firebase.auth();     // Our authentication service
-    const productsCollection = db.collection('products'); // A "table" for our products
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const productsCollection = collection(db, 'products');
 
     // --- DOM Elements ---
     const loginView = document.getElementById('login-view');
@@ -35,30 +31,29 @@ const analytics = getAnalytics(app);
     const loginBtn = document.getElementById('login-btn');
     const menuList = document.getElementById('current-menu');
     const form = document.getElementById('add-item-form');
-    let products = []; // Local cache of products
+    let products = [];
 
     // --- AUTHENTICATION ---
-    auth.onAuthStateChanged(user => {
+    onAuthStateChanged(auth, user => {
         if (user) {
-            // User is signed in.
             loginView.classList.add('hidden');
             adminContent.classList.remove('hidden');
             loadProducts();
         } else {
-            // User is signed out.
             adminContent.classList.add('hidden');
             loginView.classList.remove('hidden');
         }
     });
 
     loginBtn.addEventListener('click', () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider).catch(error => console.error("Login failed:", error));
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider).catch(error => console.error("Login failed:", error));
     });
 
     // --- DATABASE FUNCTIONS ---
     async function loadProducts() {
-        const snapshot = await productsCollection.orderBy('name').get();
+        const q = query(productsCollection, orderBy('name'));
+        const snapshot = await getDocs(q);
         products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderMenu();
     }
@@ -84,7 +79,6 @@ const analytics = getAnalytics(app);
         });
     };
 
-    // Add item
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const newProduct = {
@@ -94,21 +88,21 @@ const analytics = getAnalytics(app);
             image: document.getElementById('image').value,
         };
         try {
-            await productsCollection.add(newProduct);
+            await addDoc(productsCollection, newProduct);
             form.reset();
-            loadProducts(); // Reload from database to show new item
+            loadProducts();
         } catch (error) {
             console.error("Error adding document: ", error);
         }
     });
 
-    // Remove item
     menuList.addEventListener('click', async (e) => {
         if (e.target.classList.contains('remove-btn')) {
             const idToRemove = e.target.dataset.id;
             try {
-                await productsCollection.doc(idToRemove).delete();
-                loadProducts(); // Reload from database
+                const docRef = doc(db, 'products', idToRemove);
+                await deleteDoc(docRef);
+                loadProducts();
             } catch (error) {
                 console.error("Error removing document: ", error);
             }
