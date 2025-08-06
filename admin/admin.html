@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,45 +7,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="admin.css">
 </head>
-
 <body>
     <div class="container">
-        <header>
-            <h1>Admin Panel</h1>
-            <a href="../index.html" class="view-site-link">View Live Site &rarr;</a>
-        </header>
+        
+        <!-- This is the wrapper for the entire logged-in view -->
+        <div id="admin-panel-wrapper" class="hidden">
+            <header>
+                <h1>Admin Panel</h1>
+                <nav class="admin-nav">
+                    <a href="admin.html" class="active">Manage Menu</a>
+                    <a href="../orders/orders.html">View Orders</a>
+                    <button id="admin-logout-btn" class="btn-admin-logout">Logout</button>
+                </nav>
+            </header>
 
-        <main>
-            <div id="login-view" style="text-align: center;">
-                <h2>Admin Login Required</h2>
-                <p>Please log in with your Google account to manage the menu.</p>
-                <button id="login-btn" class="btn">Login with Google</button>
-            </div>
-
-            <div id="admin-content" class="hidden">
+            <!-- The <main> tag is now correctly placed INSIDE the wrapper -->
+            <main>
                 <div class="form-container">
                     <h2>Add New Beverage</h2>
                     <form id="add-item-form">
-                        <div class="form-group"><label for="name">Beverage Name</label><input type="text" id="name"
-                                required></div>
-                        <div class="form-group"><label for="description">Description</label><textarea id="description"
-                                rows="3" required></textarea></div>
-                        <div class="form-group"><label for="price">Price ($)</label><input type="number" id="price"
-                                step="0.01" min="0" required></div>
-                        <div class="form-group"><label for="image">Image URL</label><input type="url" id="image"
-                                required></div>
+                        <div class="form-group">
+                            <label for="name">Beverage Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price ($)</label>
+                            <input type="number" id="price" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image URL</label>
+                            <input type="url" id="image" required>
+                        </div>
                         <button type="submit" class="btn">Add Item</button>
                     </form>
                 </div>
                 <div class="menu-container">
                     <h2>Current Menu</h2>
-                    <div id="current-menu" class="menu-list"></div>
+                    <div id="current-menu" class="menu-list">
+                        <!-- Items will be loaded here -->
+                    </div>
                 </div>
+            </main>
+        </div>
+        
+        <!-- This is the view for logged-out users -->
+        <div id="login-view">
+             <div style="text-align: center;">
+                <h2>Admin Login Required</h2>
+                <p>Please log in with your Google account to manage the menu.</p>
+                <button id="login-btn" class="btn">Login with Google</button>
+                <p id="login-error-message" class="error-text hidden"></p>
             </div>
-        </main>
+        </div>
+
     </div>
 
     <script type="module" src="admin.js"></script>
 </body>
-
 </html>

@@ -12,7 +12,7 @@ body {
   background: linear-gradient(135deg, #f7e6d2 0%, #c28e56 100%);
   min-height: 100vh;
   color: #3b2f2f;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
@@ -24,15 +24,16 @@ body {
   padding: 0 20px;
 }
 
-/* Navbar */
+/* === Enhanced Navbar === */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(50, 30, 15, 0.5);
-  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(45, 25, 10, 0.6);
+  backdrop-filter: saturate(180%) blur(10px);
   padding: 15px 20px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(249, 226, 179, 0.2);
 }
 
 .nav-container {
@@ -52,7 +53,8 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 35px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -61,7 +63,12 @@ body {
   text-decoration: none;
   font-size: 1.1rem;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f8b500;
+  transform: translateY(-2px);
 }
 
 .nav-links a::after {
@@ -71,12 +78,9 @@ body {
   height: 2px;
   background: #f8b500;
   bottom: -5px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #f8b500;
 }
 
 .nav-links a:hover::after {
@@ -90,8 +94,9 @@ body {
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 700;
-  vertical-align: top;
-  margin-left: 4px;
+  vertical-align: super;
+  margin-left: 5px;
+  box-shadow: 0 0 10px rgba(248, 181, 0, 0.5);
 }
 
 .hamburger {
@@ -106,8 +111,8 @@ body {
 .section-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 2.8rem;
-  margin: 3rem 0 1.5rem;
+  font-size: 3rem;
+  margin: 4rem 0 2rem;
   text-align: center;
   color: #4a2c16;
   letter-spacing: 1px;
@@ -116,35 +121,55 @@ body {
 /* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
 }
 
-/* Card */
+/* === Card Entrance Animation Definition === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Enhanced Card Design === */
 .card {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #fff8f0, #f2e6d9);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(69, 44, 16, 0.15);
+  background: linear-gradient(135deg, #fffaf4, #fdf3e8);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(69, 44, 16, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(249, 226, 179, 0.4);
+  opacity: 0;
+  /* STARTING STATE: Card is invisible */
+}
+
+.card.visible {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(69, 44, 16, 0.35);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(69, 44, 16, 0.2);
 }
 
 .card img {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
 }
 
 .card-content {
-  padding: 1.2rem 1.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -152,57 +177,66 @@ body {
 
 .card-content h3 {
   color: #5a381e;
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .card-content p {
   color: #6f503c;
   font-size: 1rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   flex-grow: 1;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .card-content span {
   font-weight: 700;
   color: #ba6500;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
   display: block;
 }
 
 .card-content button {
-  background-color: #f8b500;
+  background: linear-gradient(45deg, #f8b500, #f78d1d);
   border: none;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
-  padding: 10px 0;
+  padding: 12px 0;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(248, 181, 0, 0.6);
-  width: 150px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(248, 181, 0, 0.4);
+  width: 160px;
   align-self: flex-start;
 }
 
 .card-content button:hover {
-  background-color: #d99200;
-  box-shadow: 0 6px 14px rgba(217, 146, 0, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(248, 181, 0, 0.6);
 }
 
-/* Modal Styles */
+.card-content button:disabled {
+  background: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* === Modal Styles === */
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 2000; 
+  display: none;
+  position: fixed;
+  z-index: 2000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.6);
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -215,12 +249,31 @@ body {
   max-width: 600px;
   border-radius: 12px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: slideIn 0.4s ease-in-out;
 }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 .close-btn {
   color: #aaa;
@@ -238,12 +291,13 @@ body {
   color: #ba6500;
 }
 
-/* Cart Modal Specifics */
+/* === Cart Modal Specifics === */
 #cart-items-container {
   max-height: 40vh;
   overflow-y: auto;
   margin: 20px 0;
 }
+
 .cart-item {
   display: flex;
   align-items: center;
@@ -251,9 +305,11 @@ body {
   padding-bottom: 15px;
   border-bottom: 1px solid #f2e6d9;
 }
+
 .cart-item:last-child {
   border-bottom: none;
 }
+
 .cart-item img {
   width: 80px;
   height: 80px;
@@ -261,20 +317,25 @@ body {
   border-radius: 8px;
   margin-right: 15px;
 }
+
 .cart-item-details {
   flex-grow: 1;
 }
+
 .cart-item-details h4 {
   color: #5a381e;
   margin-bottom: 5px;
 }
+
 .cart-item-price {
   color: #6f503c;
 }
+
 .cart-item-actions {
   display: flex;
   align-items: center;
 }
+
 .cart-item-actions input {
   width: 40px;
   text-align: center;
@@ -283,6 +344,7 @@ body {
   border-radius: 4px;
   padding: 4px;
 }
+
 .cart-item-actions button {
   background: none;
   border: none;
@@ -290,12 +352,14 @@ body {
   cursor: pointer;
   font-size: 1rem;
 }
+
 .cart-summary {
   text-align: right;
   margin-top: 20px;
   font-size: 1.4rem;
   color: #4a2c16;
 }
+
 .btn-checkout {
   display: block;
   width: 100%;
@@ -310,85 +374,200 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .btn-checkout:hover {
   background-color: #d99200;
 }
 
-/* Login Modal Specifics */
-#login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
-}
-#login-form input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #c28e56;
-  font-size: 1rem;
-}
-#login-form .btn-login {
-  padding: 12px;
-  font-size: 1.1rem;
-  background-color: #f8b500;
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#login-form p {
-  text-align: center;
-  margin-top: 10px;
+/* === Customer Auth Styles === */
+.hidden {
+  display: none !important;
 }
 
-/* Footer */
+.btn-login-nav {
+  background: #f8b500;
+  color: #4a2c16;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login-nav:hover {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#user-actions {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-profile #user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #f8b500;
+  object-fit: cover;
+}
+
+.user-profile #user-name {
+  font-weight: 600;
+  color: #f9e2b3;
+}
+
+.btn-logout {
+  background: none;
+  border: 1px solid #f9e2b3;
+  color: #f9e2b3;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background: #f9e2b3;
+  color: #4a2c16;
+}
+
+/* === Footer === */
 .footer {
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   background: #4a2c16;
   color: #f9e2b3;
   font-weight: 600;
   font-size: 1rem;
+  margin-top: 2rem;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* === Responsive Design === */
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
   }
+
   .card img {
     height: 250px;
   }
+
   .card-content button {
     width: 100%;
   }
+
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: rgba(50, 30, 15, 0.95);
     position: absolute;
-    top: 65px;
+    top: 75px;
+    /* Adjusted for navbar height */
     right: 20px;
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     padding: 10px 20px;
   }
+
   .nav-links.active {
     display: flex;
   }
+
   .hamburger {
     display: block;
   }
+
   .modal-content {
     width: 95%;
     margin: 20% auto;
     padding: 20px;
   }
+}
+
+
+/* === New Styles for Skeleton Loader === */
+
+/* Animation for the shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/* Base style for any skeleton element */
+.skeleton-img,
+.skeleton-title,
+.skeleton-text,
+.skeleton-price,
+.skeleton-button {
+  background-color: #e0d9d1;
+  background-image: linear-gradient(to right, #e0d9d1 0%, #f0ebe5 20%, #e0d9d1 40%, #e0d9d1 100%);
+  background-repeat: no-repeat;
+  background-size: 800px 240px;
+  /* Width should be wider than the element */
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 8px;
+}
+
+/* Applying skeleton styles to the card structure */
+.card.skeleton {
+  opacity: 1;
+  /* Skeletons should be visible immediately */
+  animation: none;
+  box-shadow: 0 10px 30px rgba(69, 44, 16, 0.05);
+  /* Lighter shadow for placeholders */
+}
+
+.card.skeleton .skeleton-img {
+  width: 100%;
+  height: 240px;
+  border-radius: 0;
+}
+
+.card.skeleton .skeleton-content {
+  padding: 1.5rem;
+}
+
+.card.skeleton .skeleton-title {
+  height: 2rem;
+  width: 70%;
+  margin-bottom: 0.75rem;
+}
+
+.card.skeleton .skeleton-text {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.card.skeleton .skeleton-text.short {
+  width: 80%;
+}
+
+.card.skeleton .skeleton-price {
+  height: 1.5rem;
+  width: 40%;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.card.skeleton .skeleton-button {
+  height: 45px;
+  /* Matches button height */
+  width: 160px;
+  border-radius: 30px;
 }

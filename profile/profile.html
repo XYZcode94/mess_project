@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - Prem Nagri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+        <!-- ADD THESE TWO LINES FOR TOASTIFY -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <!-- Reusing the main stylesheet for consistency -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- New stylesheet for profile-specific styles -->
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <!-- The navbar is the same as index.html for a consistent user experience -->
+    <nav class="navbar">
+        <div class="nav-container container">
+            <div class="logo">Prem Nagri</div>
+            <div id="nav-links" class="nav-links">
+                <a href="../index.html">Home</a>
+                <div id="user-actions" class="hidden">
+                    <a href="#" id="cart-link">
+                        Cart <span id="cart-count">0</span>
+                    </a>
+                    <a href="profile.html" id="profile-link" class="user-profile active">
+                        <img id="user-avatar" src="https://placehold.co/40x40/f8b500/4a2c16?text=U" alt="User Avatar">
+                        <span id="user-name">User</span>
+                    </a>
+                    <button id="logout-btn" class="btn-logout">Logout</button>
+                </div>
+                <div id="guest-actions">
+                    <a href="index.html" class="btn-login-nav">Login / Sign Up</a>
+                </div>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="profile-page-wrapper">
+            <!-- This section will be hidden until the user is confirmed to be logged in -->
+            <div id="profile-content" class="hidden">
+                <header class="profile-header">
+                    <img id="profile-avatar-large" src="https://placehold.co/100x100/f8b500/4a2c16?text=U" alt="User Avatar">
+                    <div class="profile-info">
+                        <h1 id="profile-display-name">Welcome, User!</h1>
+                        <p id="profile-email">user@example.com</p>
+                    </div>
+                </header>
+
+                <section class="order-history">
+                    <h2>Your Order History</h2>
+                    <div id="order-history-container">
+                        <!-- Order history will be loaded here by profile.js -->
+                        <p>Loading your orders...</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2025 Premi. All rights reserved.
+    </footer>
+
+    <script type="module" src="profile.js"></script>
+</body>
+</html>
