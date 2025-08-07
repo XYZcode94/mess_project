@@ -1,4 +1,4 @@
-// profile.js (Final Bug Fix)
+// profile.js (Corrected Hamburger Logic)
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getFirestore, collection, getDocs, query, where, orderBy, doc, updateDoc, onSnapshot, enableIndexedDbPersistence, deleteDoc, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
@@ -46,16 +46,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmMessage = document.getElementById('confirm-message');
     const confirmBtnYes = document.getElementById('confirm-btn-yes');
     const confirmBtnNo = document.getElementById('confirm-btn-no');
+    const hamburgerBtn = document.getElementById('hamburger-btn'); // Get hamburger button
+    const navLinks = document.getElementById('nav-links'); // Get nav links container
 
     let cartListener = null;
     let cart = [];
-    let confirmAction = null; // To store the function to run on "Yes"
+    let confirmAction = null;
+
+    // --- THIS IS THE FIX ---
+    // Hamburger Menu Logic
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 
     // --- Custom Confirmation Modal Logic ---
     function openConfirmModal(title, message, onConfirm) {
         confirmTitle.textContent = title;
         confirmMessage.textContent = message;
-        confirmAction = onConfirm; // Store the action to perform
+        confirmAction = onConfirm;
         openModal(confirmModal);
     }
 
@@ -66,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     confirmBtnYes.addEventListener('click', () => {
         if (typeof confirmAction === 'function') {
-            confirmAction(); // Execute the stored action
+            confirmAction();
         }
         closeConfirmModal();
     });
@@ -83,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profileContent.classList.remove('hidden');
         } else {
             if (cartListener) cartListener();
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }
     });
     
@@ -294,10 +304,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function showToast(message, type = 'success') { let backgroundColor; switch (type) { case 'error': backgroundColor = "linear-gradient(to right, #e74c3c, #c03b2b)"; break; case 'info': backgroundColor = "linear-gradient(to right, #3498db, #2980b9)"; break; default: backgroundColor = "linear-gradient(to right, #00b09b, #96c93d)"; break; } Toastify({ text: message, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: backgroundColor, borderRadius: "8px" }, }).showToast(); }
-
 });
-
-function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('active');
-}
