@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - View Orders</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../admin/admin.css"> 
+    <link rel="stylesheet" href="../admin/admin.css">
     <link rel="stylesheet" href="orders.css">
 </head>
+
 <body>
     <div class="container">
 
@@ -21,12 +23,18 @@
                 <button id="admin-logout-btn" class="btn-admin-logout">Logout</button>
             </header>
 
-            <!-- Order Status Filter Bar -->
-            <div class="order-filters">
-                <button class="filter-btn active" data-status="all">All Orders</button>
-                <button class="filter-btn" data-status="new">New <span id="new-count">(0)</span></button>
-                <button class="filter-btn" data-status="in-progress">In Progress <span id="progress-count">(0)</span></button>
-                <button class="filter-btn" data-status="completed">Completed</button>
+            <!-- THIS IS THE UPDATED SECTION -->
+            <div class="order-controls">
+                <div class="order-filters">
+                    <button class="filter-btn active" data-status="all">All Orders</button>
+                    <button class="filter-btn" data-status="new">New <span id="new-count">(0)</span></button>
+                    <button class="filter-btn" data-status="in-progress">In Progress <span
+                            id="progress-count">(0)</span></button>
+                    <button class="filter-btn" data-status="completed">Completed</button>
+                </div>
+                <div class="order-search">
+                    <input type="text" id="order-search-input" placeholder="Search by name or email...">
+                </div>
             </div>
 
             <main class="orders-main">
@@ -40,4 +48,5 @@
 
     <script type="module" src="orders.js"></script>
 </body>
+
 </html>
