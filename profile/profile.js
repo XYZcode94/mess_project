@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logoutBtn.addEventListener('click', () => {
         signOut(auth).then(() => {
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }).catch(error => console.error("Logout failed:", error));
     });
     
