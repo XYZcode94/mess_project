@@ -78,17 +78,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const showToast = (msg, type = 'info') => {
         if (typeof Toastify !== 'undefined') {
             const bg = type === 'error' ? "linear-gradient(to right,#e74c3c,#c03b2b)" :
-                        type === 'success' ? "linear-gradient(to right,#00b09b,#96c93d)" :
-                        "linear-gradient(to right,#3498db,#2980b9)";
+                type === 'success' ? "linear-gradient(to right,#00b09b,#96c93d)" :
+                    "linear-gradient(to right,#3498db,#2980b9)";
             Toastify({
-                text: msg, duration: 3000, close: true,
-                gravity: "top", position: "right",
-                style: { background: bg, borderRadius: "8px" }
+                text: msg,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "center", // changed to center position as requested
+                stopOnFocus: true,
+                style: {
+                    background: bg,
+                    color: "#fff",            // white text
+                    borderRadius: "8px",
+                    fontWeight: "600",
+                    fontSize: "16px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    padding: "12px 20px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    maxWidth: "350px",
+                    zIndex: 9999
+                }
             }).showToast();
         } else {
             console.log(`[toast-${type}] ${msg}`);
         }
     };
+
 
     const openConfirmModal = (title, message, onConfirm) => {
         if (!elements.confirmModal) return;

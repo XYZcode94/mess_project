@@ -1,5 +1,7 @@
 // script.js (Unified, debug-friendly, ready-to-use)
 // Make sure your <script> tag is: <script type="module" src="script.js"></script>
+const orderSuccessSound = new Audio('../sound/order-success.mp3');
+// e.g. './sounds/order-success.mp3' or full URL
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import {
@@ -103,31 +105,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Helper UI functions ---
   function showToast(message, type = 'success') {
-    // If Toastify is available use it, otherwise fallback to alert for debugging
     try {
       if (typeof Toastify !== 'undefined') {
         let background;
-        if (type === 'error') background = "linear-gradient(to right, #e74c3c, #c03b2b)";
-        else if (type === 'info') background = "linear-gradient(to right, #3498db, #2980b9)";
-        else background = "linear-gradient(to right, #00b09b, #96c93d)";
+        if (type === 'error') background = "linear-gradient(to right, #dc3545, #c82333)";
+        else if (type === 'info') background = "linear-gradient(to right, #17a2b8, #117a8b)";
+        else background = "linear-gradient(to right, #28a745, #218838)"; // success
+
         Toastify({
           text: message,
           duration: 3000,
           close: true,
           gravity: "top",
-          position: "right",
+          position: "center",
           stopOnFocus: true,
-          style: { background, borderRadius: "8px" }
+          style: {
+            background,
+            color: "#fff",          // white text
+            borderRadius: "8px",
+            fontWeight: "600",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            padding: "12px 20px",
+            textAlign: "center"
+          }
         }).showToast();
       } else {
-        // fallback for debugging
         console.info("TOAST:", message);
-        // alert(message); // uncomment if you want blocking alerts
       }
     } catch (err) {
       console.error("showToast error:", err);
     }
   }
+
 
   function renderSkeletonLoader() {
     if (!beverageGrid) return;
@@ -448,11 +458,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Place order
+
   async function placeOrder() {
     if (!currentUser || !cart || cart.length === 0) return;
+
     try {
       const ordersRef = collection(db, 'orders');
       const total = cart.reduce((s, i) => s + (i.price || 0) * (i.quantity || 0), 0);
+
+      // 1. Add order to Firestore
       await addDoc(ordersRef, {
         userId: currentUser.uid,
         userName: currentUser.displayName || '',
@@ -462,13 +476,22 @@ document.addEventListener('DOMContentLoaded', () => {
         status: 'new',
         createdAt: serverTimestamp()
       });
-      // clear cart
+
+      // 2. Play your custom order success sound
+      orderSuccessSound.play().catch(e => {
+        console.warn("Audio play was blocked:", e);
+      });
+
+      // 3. Clear the cart in Firestore
       for (const item of cart) {
         await deleteDoc(doc(db, `users/${currentUser.uid}/cart`, item.id));
       }
+
+      // 4. Reload cart, show toast, close modal
       await loadCartFromFirestore();
       showToast("Order placed successfully! Please pay via UPI on delivery.", 'success');
       closeModal(cartModal);
+
     } catch (err) {
       console.error("placeOrder error:", err);
       showToast("Error placing order. See console.", 'error');
