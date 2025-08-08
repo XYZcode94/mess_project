@@ -3,6 +3,9 @@
 const orderSuccessSound = new Audio('../sound/order-success.mp3');
 // e.g. './sounds/order-success.mp3' or full URL
 
+const orderErrorSound = new Audio('../sound/order-error.mp3');
+// e.g. './sounds/order-success.mp3' or full URL
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import {
   getFirestore,
@@ -494,9 +497,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (err) {
       console.error("placeOrder error:", err);
+
+      // Play error sound on failure
+      if (typeof orderErrorSound !== 'undefined') {
+        orderErrorSound.play().catch(e => {
+          console.warn("Audio play was blocked:", e);
+        });
+      }
+
       showToast("Error placing order. See console.", 'error');
     }
   }
+
 
   // --- Modal confirm remove item ---
   function openConfirmModal(productId) {

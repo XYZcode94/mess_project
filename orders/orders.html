@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - View Orders</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../admin/admin.css"> 
+    <link rel="stylesheet" href="../admin/admin.css">
     <link rel="stylesheet" href="orders.css">
 </head>
+
 <body>
     <div class="container">
 
@@ -22,10 +24,16 @@
             </header>
 
             <div class="order-controls">
-                <div class="order-filters">
-                    <button class="filter-btn active" data-status="all">All Orders</button>
+                <div class="date-filters">
+                    <button class="date-filter-btn active" data-range="today">Today</button>
+                    <button class="date-filter-btn" data-range="week">This Week</button>
+                    <button class="date-filter-btn" data-range="month">This Month</button>
+                </div>
+                <div class="status-filters">
+                    <button class="filter-btn active" data-status="all">All</button>
                     <button class="filter-btn" data-status="new">New <span id="new-count">(0)</span></button>
-                    <button class="filter-btn" data-status="in-progress">In Progress <span id="progress-count">(0)</span></button>
+                    <button class="filter-btn" data-status="in-progress">In Progress <span
+                            id="progress-count">(0)</span></button>
                     <button class="filter-btn" data-status="completed">Completed</button>
                 </div>
                 <div class="order-search">
@@ -54,7 +62,11 @@
             </div>
             <div class="chat-input-area">
                 <button id="send-qr-btn" class="btn-send-qr" title="Send Payment QR Code">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15 15H17V17H15V15ZM15 11H17V13H15V11ZM11 15H13V17H11V15ZM11 11H13V13H11V11ZM7 15H9V17H7V15ZM7 11H9V13H7V11ZM15 7H17V9H15V7ZM11 7H13V9H11V7ZM7 7H9V9H7V7ZM3 3H9V9H3V3ZM5 5V7H7V5H5ZM3 13H9V19H3V13ZM5 15V17H7V15H5ZM13 3H19V9H13V3ZM15 5V7H17V5H15ZM13 13H19V19H13V13ZM15 15V17H17V15H15Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M15 15H17V17H15V15ZM15 11H17V13H15V11ZM11 15H13V17H11V15ZM11 11H13V13H11V11ZM7 15H9V17H7V15ZM7 11H9V13H7V11ZM15 7H17V9H15V7ZM11 7H13V9H11V7ZM7 7H9V9H7V7ZM3 3H9V9H3V3ZM5 5V7H7V5H5ZM3 13H9V19H3V13ZM5 15V17H7V15H5ZM13 3H19V9H13V3ZM15 5V7H17V5H15ZM13 13H19V19H13V13ZM15 15V17H17V15H15Z">
+                        </path>
+                    </svg>
                 </button>
                 <input type="text" id="chat-input" placeholder="Type a message...">
                 <button id="chat-send-btn" class="btn-send">Send</button>
@@ -64,4 +76,5 @@
 
     <script type="module" src="orders.js"></script>
 </body>
+
 </html>
