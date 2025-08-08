@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       adminPanelWrapper?.classList.remove('hidden');
       listenForOrders();
     } else {
-      window.location.href = '/admin.html';
+      window.location.href = '../admin.html';
     }
   });
 
