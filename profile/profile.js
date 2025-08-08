@@ -12,6 +12,14 @@ import {
     getAuth, onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
+const orderSuccessSound = new Audio('../sound/order-success.mp3');
+
+const orderErrorSound = new Audio('../sound/order-error.mp3');
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. FIREBASE INITIALIZATION ---
@@ -122,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             setupUserPage(user);
         } else {
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }
     });
 
@@ -400,9 +408,15 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.forEach(it => batch.delete(doc(db, `users/${currentUser.uid}/cart`, it.id)));
             await batch.commit();
             showToast('Order placed successfully!', 'success');
+            orderSuccessSound.play().catch(e => {
+                console.warn("Audio play was blocked:", e);
+            });
             closeModal(elements.cartModal);
         } catch (err) {
             console.error('Place order error:', err);
+            orderErrorSound.play().catch(e => {
+                console.warn("Audio play was blocked:", e);
+            });
             showToast('Could not place order', 'error');
         }
     }
