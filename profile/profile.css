@@ -1,70 +1,230 @@
-/* === Professional Redesign for Profile Page === */
+/* === Variables for Consistent Colors === */
+:root {
+    --primary: #f8b500;
+    --primary-dark: #c28e56;
+    --accent-red: #e74c3c;
+    --text-dark: #4a2c16;
+    --text-muted: #8c7d72;
+    --bg-light: #fdfaf6;
+    --border-light: #f0ebe5;
+    --success: #2ecc71;
+    --warning: #f57f17;
+    --danger: #c62828;
+}
 
-/* --- General Layout --- */
-.nav-links a.active { color: #f8b500; }
-#profile-page-wrapper { background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); margin-top: 2rem; min-height: 60vh; }
-.loading-message, .empty-message, .error-text { text-align: center; padding: 40px; font-size: 1.1rem; color: #8c7d72; font-weight: 500; }
-.error-text { color: #c0392b; }
+/* === Notification Styles === */
+.user-profile {
+    position: relative;
+}
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-red);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: none;
+}
+.notification-dot.visible { display: block; }
 
-/* --- Profile Header --- */
-.profile-header { display: flex; align-items: center; gap: 20px; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #f0ebe5; flex-direction: column; text-align: center; }
-#profile-avatar-large { width: 80px; height: 80px; border-radius: 50%; border: 4px solid #f8b500; }
-.profile-info h1 { color: #4a2c16; margin: 0 0 5px 0; font-size: 1.5rem; }
-.profile-info p { color: #8c7d72; margin: 0; }
+.btn-view-chat {
+    position: relative;
+    background: none;
+    border: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.btn-view-chat:hover {
+    background-color: var(--primary-dark);
+    color: #fff;
+}
+.chat-notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+.chat-notification-badge.visible { display: flex; }
 
-/* --- Order History Section --- */
-.order-history h2 { color: #4a2c16; margin-bottom: 20px; text-align: center; }
-#order-history-container { display: flex; flex-direction: column; gap: 15px; }
+/* === Profile Page === */
+.nav-links a.active { color: var(--primary); }
 
-/* --- NEW: Accordion Order Card --- */
+#profile-page-wrapper {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    margin-top: 2rem;
+    min-height: 60vh;
+}
+
+.loading-message,
+.empty-message,
+.error-text {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.error-text { color: var(--danger); }
+
+/* Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-light);
+    flex-direction: column;
+    text-align: center;
+}
+#profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+}
+.profile-info h1 {
+    color: var(--text-dark);
+    margin: 0 0 5px;
+    font-size: 1.5rem;
+}
+.profile-info p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Order History */
+.order-history h2 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+#order-history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Order Card */
 .order-card-accordion {
-    background-color: #fff;
-    border: 1px solid #f0ebe5;
+    background: #fff;
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     transition: all 0.3s ease;
 }
-
 .order-summary {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 15px 20px;
     cursor: pointer;
-    background-color: #fdfaf6;
+    background: var(--bg-light);
     border-radius: 12px;
 }
-.order-summary:hover {
-    background-color: #f9f4ef;
+.order-summary:hover { background: #f9f4ef; }
+
+.order-summary-col {
+    font-weight: 500;
+    color: #5a381e;
+}
+.order-summary-col.total {
+    font-weight: 700;
+    text-align: right;
+}
+.order-summary-col .order-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
-.order-summary-col { font-weight: 500; color: #5a381e; }
-.order-summary-col.total { font-weight: 700; text-align: right; }
-.order-summary-col .order-date { font-size: 0.9rem; color: #8c7d72; }
+/* Status Colors */
+.order-status {
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+.status-new { background: #e0f7fa; color: #00796b; }
+.status-in-progress { background: #fff9c4; color: var(--warning); }
+.status-completed { background: #e8f5e9; color: #2e7d32; }
+.status-cancelled { background: #ffebee; color: var(--danger); }
 
-.order-status { font-weight: 600; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; text-transform: capitalize; text-align: center; }
-.order-status.status-new { background-color: #e0f7fa; color: #00796b; }
-.order-status.status-in-progress { background-color: #fff9c4; color: #f57f17; }
-.order-status.status-completed { background-color: #e8f5e9; color: #2e7d32; }
-.order-status.status-cancelled { background-color: #ffebee; color: #c62828; }
-
+/* Order Details */
 .order-details {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
     padding: 0 20px;
 }
-
 .order-card-accordion.active .order-details {
-    max-height: 1000px; /* Large enough to fit any content */
+    max-height: 1000px;
     padding: 20px;
 }
-
-.order-items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-.order-items-table th, .order-items-table td { text-align: left; padding: 10px; border-bottom: 1px solid #f0ebe5; }
+.order-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.order-items-table th,
+.order-items-table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-light);
+}
 .order-items-table tr:last-child td { border-bottom: none; }
-.order-items-table th { color: #5a381e; font-size: 0.8rem; text-transform: uppercase; }
+.order-items-table th {
+    color: #5a381e;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
 
-/* --- NEW: Order Progress Tracker --- */
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Cancel Button */
+.btn-cancel-order {
+    background: #ff0000;
+    border: 1px solid rgba(251, 22, 22, 0.85);
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    margin: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.btn-cancel-order:hover {
+    transform: translateY(2px);
+    background: var(--danger);
+}
+
+/* Progress Tracker */
 .progress-tracker {
     display: flex;
     justify-content: space-between;
@@ -78,7 +238,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: #e0d9d1;
+    background: #e0d9d1;
     transform: translateY(-50%);
     z-index: 1;
 }
@@ -87,7 +247,7 @@
     top: 50%;
     left: 0;
     height: 3px;
-    background-color: #2ecc71; /* Green for progress */
+    background: var(--success);
     transform: translateY(-50%);
     z-index: 2;
     transition: width 0.5s ease;
@@ -101,28 +261,160 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #e0d9d1;
-    margin: 0 auto 10px auto;
+    background: #e0d9d1;
+    margin: 0 auto 10px;
     border: 3px solid #fff;
-    transition: background-color 0.5s ease;
+    transition: background 0.5s ease;
 }
-.progress-step.active .progress-circle {
-    background-color: #2ecc71;
-}
+.progress-step.active .progress-circle { background: var(--success); }
 .progress-label {
     font-size: 0.8rem;
     font-weight: 500;
-    color: #8c7d72;
+    color: var(--text-muted);
 }
 .progress-step.active .progress-label {
-    color: #4a2c16;
+    color: var(--text-dark);
     font-weight: 600;
 }
 
-/* --- Responsive Design --- */
+/* === Chat Modal === */
+.chat-modal-content {
+    max-width: 500px;
+    padding: 0;
+    overflow: hidden;
+}
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-light);
+}
+.chat-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+}
+.chat-messages {
+    height: 40vh;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+.message.sent {
+    background: var(--primary-dark);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+}
+.message.received {
+    background: #e0d9d1;
+    color: var(--text-dark);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+.message.qr-code {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e0d9d1;
+    align-self: flex-start;
+}
+.message.qr-code img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-light);
+}
+#chat-input {
+    flex-grow: 1;
+    border: 1px solid #e0d9d1;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+#chat-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.btn-send {
+    border: none;
+    background: var(--text-dark);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* === Responsive === */
 @media (min-width: 769px) {
     #profile-page-wrapper { padding: 40px; }
     .profile-header { flex-direction: row; text-align: left; }
     #profile-avatar-large { width: 100px; height: 100px; }
     .order-history h2 { text-align: left; }
+}
+
+
+
+/* === New Styles for Chat Notifications === */
+
+/* Notification dot for the main user profile icon in the navbar */
+.user-profile {
+    position: relative; /* Needed for positioning the dot */
+}
+
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: none; /* Hidden by default */
+}
+
+.notification-dot.visible {
+    display: block;
+}
+
+/* Notification badge for the "View Chat" button */
+.btn-view-chat {
+    position: relative;
+}
+
+.chat-notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    display: none; /* Hidden by default */
+}
+
+.chat-notification-badge.visible {
+    display: flex;
 }
