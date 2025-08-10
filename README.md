@@ -19,6 +19,7 @@ Built from the ground up using modern web technologies with a focus on security,
 | ![Home Page](screenshots/homepage.png)  | ![Admin Dashboard](screenshots/admin-dashboard.png) |
 | ![Cart & Checkout](screenshots/cart.png) | ![Order Management](screenshots/orders.png)        |
 | ![Profile Page](screenshots/profile.png) | ![Live Chat](screenshots/chat.png)                  |
+![Prem Nagri Demo Screenshot](https://dl.dropboxusercontent.com/s/ky3qsfvie3269gogmmko6/Screenshot-2025-08-11-032926.png)
 
 ---
 
@@ -33,14 +34,6 @@ See how the Prem Nagri platform works through these screenshots and walkthroughs
 - [Admin Dashboard & Order Management](https://your-image-hosting-link.com/admin-demo.png)  
 
 *Click any link above to view full-size images and walkthroughs.*
-
----
-
-Alternatively, you can embed images directly:
-
-| Homepage | Cart & Checkout | Profile |
-| -------- | --------------- | ------- |
-| ![Homepage](https://your-image-hosting-link.com/homepage-demo.png) | ![Cart](https://your-image-hosting-link.com/cart-demo.png) | ![Profile](https://your-image-hosting-link.com/profile-demo.png) |
 
 ---
 
