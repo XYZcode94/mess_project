@@ -115,6 +115,48 @@ Built from the ground up using modern web technologies with a focus on security,
 
 ---
 
+## 🚀 Future Improvements & Roadmap
+
+To make Prem Nagri even more powerful and user-friendly, here are some planned enhancements and upgrades for future versions:
+
+### 1. Enhanced User Interface (UI)
+- Revamp the UI with modern design frameworks (e.g., React, Tailwind CSS) to improve responsiveness and visual appeal.
+- Add customizable themes and dark mode support for better user experience.
+
+### 2. Intelligent Chatbots
+- Integrate AI-powered chatbots to assist customers 24/7 with order queries, recommendations, and support.
+- Automate common admin responses to streamline communication.
+
+### 3. Online Payment Integration
+- Enable secure, seamless online payments supporting multiple methods such as:  
+  - UPI  
+  - Credit/Debit Cards  
+  - Net Banking  
+  - Wallets (e.g., Paytm, Google Pay)  
+- Incorporate popular payment gateways like Razorpay, Stripe, or PayPal for robust transaction management.
+
+### 4. Advanced Profile Management
+- Allow users to save multiple delivery addresses for faster checkout.
+- Enable users to securely store payment methods for one-click ordering.
+- Add profile customization options, including preferences and order history filters.
+
+### 5. Loyalty & Rewards Program
+- Implement a rewards system to incentivize repeat customers with points, discounts, and coupons.
+
+### 6. Real-Time Order Tracking
+- Integrate live GPS tracking for deliveries to enhance transparency and customer satisfaction.
+
+### 7. Enhanced Admin Features
+- Provide detailed analytics dashboards with sales reports, customer insights, and inventory management.
+- Add multi-admin role support with granular permissions.
+
+---
+
+These upgrades aim to transform Prem Nagri into a comprehensive, scalable, and user-centric food ordering platform suitable for modern restaurants and messes.
+
+
+---
+
 ## 🚀 Getting Started
 
 To run this project locally, you will need a Firebase project.
