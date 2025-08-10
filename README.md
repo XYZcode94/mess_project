@@ -28,11 +28,11 @@ Built from the ground up using modern web technologies with a focus on security,
 
 See how the Prem Nagri platform works through these screenshots and walkthroughs:
 
-- [Homepage & Menu Browsing](https://www.dropbox.com/scl/fi/ky3qsfvie3269gogmmko6/Screenshot-2025-08-11-032926.png?rlkey=tfl5hgmzwa06q430qqqzcwrov&st=q77fxlie&dl=0)  
-- [Shopping Cart & Checkout Process](https://your-image-hosting-link.com/cart-demo.png)  
-- [User Profile & Order Tracking](https://your-image-hosting-link.com/profile-demo.png)  
-- [Admin Dashboard & Order Management](https://your-image-hosting-link.com/admin-demo.png)  
-
+- [Homepage & Menu Browsing](https://www.dropbox.com/scl/fi/hr9vz5k4tiduxcydc31yc/Screenshot-2025-08-11-032744.png?rlkey=ezsbowpmvnburq7hd1tz8t1h0&st=bunyl2x1&dl=0)  
+- [Shopping Cart & Checkout Process](https://www.dropbox.com/scl/fi/dekuqtogtndg80bkw28m9/Screenshot-2025-08-11-032841.png?rlkey=x9zsq6k9eg7p3zuv2gqg8st8y&st=2aix9c63&dl=0)  
+- [User Profile & Order Tracking](https://www.dropbox.com/scl/fi/goqbokkcbjbj1mq755zxl/Screenshot-2025-08-11-032903.png?rlkey=d0bmsauy6t74bvd527fv3jh7j&st=boyxj3pm&dl=0)  
+- [Admin Dashboard & Order Management](https://www.dropbox.com/scl/fi/hm0ai1zvi5ftdxmcmf0gg/Screenshot-2025-08-11-033131.png?rlkey=opx76jvtd0nun6egkrwcgb8za&st=wise0tw3&dl=0)  
+- [For more screenshots click here](https://www.dropbox.com/scl/fo/z49nixw5zrrn6nprxism9/ANugFvJLrZ4OvKifZS2-Iv0?rlkey=j3zn3seh2k5shga7h6jpww4ee&st=lge1a863&dl=0)
 *Click any link above to view full-size images and walkthroughs.*
 
 ---
