@@ -22,6 +22,32 @@ Built from the ground up using modern web technologies with a focus on security,
 
 ---
 
+
+## 📸 How This Page Works – Demo Screenshots
+
+See how the Prem Nagri platform works through these screenshots and walkthroughs:
+
+- [Homepage & Menu Browsing](https://www.dropbox.com/scl/fi/ky3qsfvie3269gogmmko6/Screenshot-2025-08-11-032926.png?rlkey=tfl5hgmzwa06q430qqqzcwrov&st=q77fxlie&dl=0)  
+- [Shopping Cart & Checkout Process](https://your-image-hosting-link.com/cart-demo.png)  
+- [User Profile & Order Tracking](https://your-image-hosting-link.com/profile-demo.png)  
+- [Admin Dashboard & Order Management](https://your-image-hosting-link.com/admin-demo.png)  
+
+*Click any link above to view full-size images and walkthroughs.*
+
+---
+
+Alternatively, you can embed images directly:
+
+| Homepage | Cart & Checkout | Profile |
+| -------- | --------------- | ------- |
+| ![Homepage](https://your-image-hosting-link.com/homepage-demo.png) | ![Cart](https://your-image-hosting-link.com/cart-demo.png) | ![Profile](https://your-image-hosting-link.com/profile-demo.png) |
+
+---
+
+If you want, I can help you create or host these screenshots/images with a suggested tool and generate the markdown for embedding.
+
+---
+
 ## 🚀 Key Features
 
 ### 👩‍💻 Customer-Facing Website (`index.html`, `profile.html`)
