@@ -19,7 +19,7 @@ Built from the ground up using modern web technologies with a focus on security,
 | ![Home Page](screenshots/homepage.png)  | ![Admin Dashboard](screenshots/admin-dashboard.png) |
 | ![Cart & Checkout](screenshots/cart.png) | ![Order Management](screenshots/orders.png)        |
 | ![Profile Page](screenshots/profile.png) | ![Live Chat](screenshots/chat.png)                  |
-![Prem Nagri Demo Screenshot](https://dl.dropboxusercontent.com/s/ky3qsfvie3269gogmmko6/Screenshot-2025-08-11-032926.png)
+![Prem Nagri Demo Screenshot](screenshots/demo.png)
 
 ---
 
