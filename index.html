@@ -11,21 +11,33 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+  <!-- fontawesome icon libries -->
+  <script src="https://kit.fontawesome.com/c285d7f716.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="nav-container container">
-      <div class="logo">Prem Nagri</div>
+    <div class="nav-container">
+      <div class="logo"><i class="fa-solid fa-store"></i> Prem Nagri</div>
+
+
+      <!-- ADD THIS NEW DELIVERY SECTION -->
+      <div class="delivery-address-section">
+        <button id="get-location-btn" class="btn-get-location"><i class="fa-solid fa-location-dot" title="Used current location"></i></button>
+        <input type="text" placeholder="Enter location..." class="address-display" id="address-display" title="Enter your location">
+        <button type="submit" class="btn-submit-location" title="Confirm Address"><i class="fa-solid fa-plus"></i> Add Address</button>
+      </div>
+
+
       <div id="nav-links" class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
 
         <!-- This section is for logged-in users -->
         <div id="user-actions" class="hidden">
           <a href="#" id="cart-link">
-            Cart <span id="cart-count">0</span>
+            <i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span>
           </a>
 
           <a href="/profile/profile.html" id="profile-link" class="user-profile">
@@ -33,16 +45,16 @@
             <span id="user-name">User</span>
           </a>
 
-          <button id="logout-btn" class="btn-logout">Logout</button>
+          <button id="logout-btn" class="btn-logout"><i class="fa-solid fa-power-off"></i></button>
         </div>
 
         <!-- This section is for logged-out users (guests) -->
         <div id="guest-actions">
-          <button id="login-btn" class="btn-login-nav">Login / Sign Up</button>
+          <button id="login-btn" class="btn-login-nav"><i class="fa-solid fa-user"></i></button>
         </div>
 
       </div>
-      <div id="hamburger-btn"  class="hamburger">&#9776;</div>
+      <div id="hamburger-btn" class="hamburger">&#9776;</div>
     </div>
   </nav>
 
