@@ -1,89 +1,94 @@
 # 🍽 Prem Nagri – Modern Restaurant Ordering Platform
 
-![Firebase](https://img.shields.io/badge/Backend-Firebase-orange)
-![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow)
-![HTML5](https://img.shields.io/badge/HTML5-✔-blue)
-![CSS3](https://img.shields.io/badge/CSS3-✔-purple)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Live-brightgreen)
+A complete, commercial-grade, fully responsive restaurant ordering system.  
+Delivering a smooth **customer experience** alongside a secure, powerful **admin panel**.
 
-Prem Nagri is a **complete, commercial-grade, and fully responsive** restaurant web application.  
-It offers a **seamless ordering experience for customers** and a **secure, feature-rich admin panel** for restaurant staff.
-
-**Live Demo:** [mess-project.vercel.app](https://mess-project.vercel.app/)  
-**GitHub Repo:** [mess_project](https://github.com/XYZcode94/mess_project)
+<p align="center">
+  <a href="https://mess-project.vercel.app/"><img src="https://img.shields.io/badge/🌐-Live%20Demo-brightgreen" alt="Live Demo" /></a>
+  <a href="https://github.com/XYZcode94/mess_project"><img src="https://img.shields.io/badge/📂-GitHub%20Repo-blue" alt="GitHub Repo" /></a>
+</p>
 
 ---
 
 ## 📸 Screenshots
 
-### Customer Website
-![Home Page](screenshots/homepage.png)
-![Cart & Checkout](screenshots/cart.png)
-![Profile Page](screenshots/profile.png)
-
-### Admin Panel
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Order Management](screenshots/orders.png)
+| Customer Website                   | Admin Panel                  |
+| -------------------------------- | ----------------------------|
+| ![Home Page](screenshots/homepage.png)         | ![Admin Dashboard](screenshots/admin-dashboard.png)     |
+| ![Cart & Checkout](screenshots/cart.png)       | ![Order Management](screenshots/orders.png)             |
+| ![Profile Page](screenshots/profile.png)       | ![Live Chat](screenshots/chat.png)                       |
 
 ---
 
-## 🏗 Architecture Overview
+## 🏗 Architecture
 
-![Architecture Diagram](screenshots/architecture-diagram.png)
-
-**Flow:**
-1. **Customer Website** → Firebase Authentication → Firestore (Products, Orders, Chats)
-2. **Admin Panel** → Separate Firebase Auth Instance → Firestore (Menu Management, Order Management)
-3. **Both Sides** communicate with Firestore in real-time.
+![Architecture Diagram](screenshots/architecture-diagram.png)  
+*Both Customer and Admin apps connect to Firebase for authentication, real-time data sync, and hosting.*
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-### 🍴 Customer-Facing Website
-- **High-Performance Menu** – Paginated product loading with "Load More" button.
-- **Smart Search** – Case-insensitive, partial, and out-of-order search.
-- **Search History** – Saves last 5 searches locally.
-- **Google Sign-In** – Secure authentication via Firebase.
-- **Persistent Cart** – Saved to Firestore for cross-device access.
-- **"Pay on Delivery" Orders** – Orders saved with payment instructions.
-- **Zomato-Style Sound** – Tone.js sound effect for order placement.
-- **Geolocation Delivery** – Auto-fetch address using OpenStreetMap.
-- **Full Profile Page** – Personal info, order history, cancel option, live progress.
-- **Real-Time Chat & Notifications** – Per-order chat with unread message indicators.
+### 👨‍🍳 Customer Website
+
+- **High-Performance Menu with Pagination**  
+- **Smart Search:** Partial, case-insensitive, out-of-order matching (e.g. “Chai Masala” finds “Masala Chai”)  
+- **Search History:** Last 5 unique searches stored locally  
+- **Secure Google Authentication** via Firebase  
+- **Persistent Cart** synced across devices via Firestore  
+- **Pay on Delivery:** Orders saved with clear payment instructions  
+- **Zomato-Style Order Sound:** Tone.js feedback on successful orders  
+- **Geolocation Delivery:** Auto-address fetching using OpenStreetMap Nominatim API  
+- **Profile Page:** Order history, real-time tracker, and cancel option for new orders  
+- **Real-Time Chat & Notifications:** Per-order messaging with unread message badges  
 
 ### 🛠 Admin Panel
-- **Separate Firebase Auth** – Isolated admin login.
-- **Role-Based Access Control** – Only `role: 'admin'` users allowed.
-- **Full Menu Management (CRUD)** – Add, edit, delete menu items.
-- **Real-Time Orders Dashboard** – Date & status filters + live updates.
-- **Order Status Pills** – One-click status change with lock for cancelled orders.
-- **Admin-Customer Chat** – Direct per-order messaging + payment QR.
+
+- **Separate Firebase Auth Instance** for admins  
+- **Role-Based Access Control:** Only users with `role: admin` have access  
+- **Full Menu Management (CRUD):** Add, edit, and delete menu items  
+- **Real-Time Orders Dashboard:** Filters by date and status, search by customer info  
+- **One-Click Status Updates:** Visual status pills, cancelled orders locked  
+- **Admin-Customer Chat:** Order-specific messaging with payment QR code sharing  
+
+---
+
+## 📊 Feature Overview
+
+| Feature               | Customer | Admin |
+|-----------------------|----------|-------|
+| Google Sign-In        | ✅       | ✅     |
+| Menu Browsing         | ✅       | ✅ (CRUD) |
+| Search & History      | ✅       | ❌     |
+| Persistent Cart       | ✅       | ❌     |
+| Pay on Delivery       | ✅       | ❌     |
+| Geolocation           | ✅       | ❌     |
+| Order Status Tracking | ✅       | ✅     |
+| Order Filters         | ❌       | ✅     |
+| Real-Time Chat        | ✅       | ✅     |
 
 ---
 
 ## 🛠 Technology Stack
 
-**Frontend:**  
-- HTML5, CSS3 (Flexbox, Grid, animations)
-- JavaScript (ES6 Modules)
-
-**Backend & Database:**  
-- Firebase Hosting  
-- Firebase Authentication  
-- Firestore (NoSQL, real-time updates)
-
-**Libraries & APIs:**  
-- [Toastify.js](https://apvarun.github.io/toastify-js/) – Notifications  
-- [Tone.js](https://tonejs.github.io/) – Audio effects  
-- [OpenStreetMap Nominatim API](https://nominatim.openstreetmap.org/) – Reverse geocoding  
+| Layer             | Technology / Library          | Purpose                         |
+|-------------------|------------------------------|--------------------------------|
+| Frontend          | HTML5, CSS3 (Flexbox/Grid)   | Responsive UI & animations     |
+|                   | JavaScript (ES6 Modules)     | Client-side logic & UI          |
+| Backend & Database | Firebase Firestore            | Real-time NoSQL data storage   |
+| Authentication    | Firebase Authentication       | Secure user login/sign-up      |
+| Hosting           | Firebase Hosting              | Fast, secure global hosting    |
+| Notifications     | Toastify.js                  | User-friendly notifications    |
+| Sound Effects     | Tone.js                      | Order confirmation sounds      |
+| Geolocation       | Browser Geolocation API       | User location fetching          |
+| Reverse Geocoding | OpenStreetMap Nominatim API  | Convert coordinates to address |
 
 ---
 
 ## 📦 Getting Started
 
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/XYZcode94/mess_project.git
-   cd mess_project
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/XYZcode94/mess_project.git
+cd mess_project
