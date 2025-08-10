@@ -5,9 +5,10 @@ It delivers a seamless ordering experience for customers and a powerful, secure 
 Built from the ground up using modern web technologies with a focus on security, performance, and an excellent user experience.
 
 <p align="center">
-  <a href="https://mess-project-3c021.web.app/"><img src="https://img.shields.io/badge/🌐-Live%20Demo-brightgreen" alt="Live Demo" /></a>
+  <a href="https://mess-project.vercel.app/"><img src="https://img.shields.io/badge/🌐-Live%20Demo-brightgreen" alt="Live Demo" /></a>
   <a href="https://github.com/XYZcode94/mess_project"><img src="https://img.shields.io/badge/📂-GitHub%20Repo-blue" alt="GitHub Repo" /></a>
 </p>
+
 
 ---
 
