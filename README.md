@@ -37,10 +37,6 @@ See how the Prem Nagri platform works through these screenshots and walkthroughs
 
 ---
 
-If you want, I can help you create or host these screenshots/images with a suggested tool and generate the markdown for embedding.
-
----
-
 ## 🚀 Key Features
 
 ### 👩‍💻 Customer-Facing Website (`index.html`, `profile.html`)
