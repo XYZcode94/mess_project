@@ -571,7 +571,7 @@ body {
 
 @media (max-width: 400px) {
   .navbar{
-    padding: 9px 5px;
+    padding: 9px 10px;
   }
 
   .logo{
