@@ -569,6 +569,32 @@ body {
 }
 
 
+@media (max-width: 400px) {
+  .navbar{
+    padding: 9px 5px;
+  }
+
+  .logo{
+    font-size: 15px;
+  }
+
+  .delivery-address-section{
+    display: flex;
+  }
+
+  .btn-get-location{
+    font-size: 15px;
+    padding: 2px;
+  }
+  .address-display input{
+    max-width: 100px;
+  }
+  .hamburger{
+    font-size: 25px;
+  }
+}
+
+
 /* === New Styles for Confirmation Modal === */
 
 .confirm-modal-content {
@@ -668,6 +694,11 @@ body {
 }
 
 .btn-submit-location {
+  display: none;
+}
+
+/*
+.btn-submit-location {
     background: none;
     border: 1px solid #f9e2b3;
     color: #f9e2b3;
@@ -675,4 +706,4 @@ body {
     border-radius: 20px;
     font-weight: 600;
     cursor: pointer;
-}
+}*/
